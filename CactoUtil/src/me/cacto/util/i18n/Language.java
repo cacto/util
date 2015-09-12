@@ -122,4 +122,16 @@ public enum Language {
 
 		return locale.getCountry().toUpperCase();
 	}
+
+	public static Language valueOf(Locale locale) {
+		for (Language language : Language.values()) {
+			if (language.getLocale() == null)
+				continue;
+
+			if (language.getCountryString().equalsIgnoreCase(locale.getCountry()) && language.getLanguageString().equalsIgnoreCase(locale.getLanguage()))
+				return language;
+		}
+
+		return null;
+	}
 }
